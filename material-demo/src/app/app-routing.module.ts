@@ -1,10 +1,12 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
-import { AppComponent } from './app.component';
+import { CheckboxComponent } from './checkbox/checkbox.component';
+import { InputComponent } from './input/input.component';
 
 const routes: Routes = [
-  { path: '', component: AppComponent },
+  { path: 'checkbox', component: CheckboxComponent },
+  { path: 'input', component: InputComponent }
 ];
 
 @NgModule({
