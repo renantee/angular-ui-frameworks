@@ -1,0 +1,22 @@
+<mat-sidenav-container class="sidenav-container">
+  <mat-sidenav #drawer class="sidenav" fixedInViewport [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
+    [mode]="(isHandset$ | async) ? 'over' : 'side'" [opened]="(isHandset$ | async) === false">
+    <mat-toolbar color="primary"> <span>Dashboard</span></mat-toolbar>
+    <mat-nav-list>
+      <a mat-list-item [routerLink]="['/card']" routerLinkActive="router-link-active" (click)="setLabel($event)">Card</a>
+      <a mat-list-item [routerLink]="['/checkbox']" routerLinkActive="router-link-active" (click)="setLabel($event)">Checkbox</a>
+      <a mat-list-item [routerLink]="['/datepicker']" routerLinkActive="router-link-active" (click)="setLabel($event)">Datepicker</a>
+      <a mat-list-item [routerLink]="['/input']" routerLinkActive="router-link-active" (click)="setLabel($event)">Input</a>
+    </mat-nav-list>
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <mat-toolbar color="primary">
+      <button type="button" aria-label="Toggle sidenav" mat-icon-button (click)="drawer.toggle()"
+        *ngIf="isHandset$ | async">
+        <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
+      </button>
+      <span>{{label}}</span>
+    </mat-toolbar>
+    <router-outlet></router-outlet>
+  </mat-sidenav-content>
+</mat-sidenav-container>
