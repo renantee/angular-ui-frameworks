@@ -6,32 +6,23 @@ import { Observable, of as observableOf, merge } from 'rxjs';
 
 // TODO: Replace this with your own data model type
 export interface OrdersTableItem {
-  name: string;
+  model: string;
+  brand: string;
   id: number;
 }
 
 // TODO: replace this with real data from your application
 const EXAMPLE_DATA: OrdersTableItem[] = [
-  {id: 1, name: 'Hydrogen'},
-  {id: 2, name: 'Helium'},
-  {id: 3, name: 'Lithium'},
-  {id: 4, name: 'Beryllium'},
-  {id: 5, name: 'Boron'},
-  {id: 6, name: 'Carbon'},
-  {id: 7, name: 'Nitrogen'},
-  {id: 8, name: 'Oxygen'},
-  {id: 9, name: 'Fluorine'},
-  {id: 10, name: 'Neon'},
-  /*{id: 11, name: 'Sodium'},
-  {id: 12, name: 'Magnesium'},
-  {id: 13, name: 'Aluminum'},
-  {id: 14, name: 'Silicon'},
-  {id: 15, name: 'Phosphorus'},
-  {id: 16, name: 'Sulfur'},
-  {id: 17, name: 'Chlorine'},
-  {id: 18, name: 'Argon'},
-  {id: 19, name: 'Potassium'},
-  {id: 20, name: 'Calcium'},*/
+  {id: 1, model: 'Galaxy M21s', brand: 'Samsung'},
+  {id: 2, model: 'Galaxy Note20 5G', brand: 'Samsung'},
+  {id: 3, model: 'Galaxy Tab S7+', brand: 'Samsung'},
+  {id: 4, model: 'Galaxy Tab S6 Lite', brand: 'Samsung'},
+  {id: 5, model: 'iPhone 12 Pro Max', brand: 'Apple'},
+  {id: 6, model: 'iPhone 12 Pro', brand: 'Apple'},
+  {id: 7, model: 'iPhone 11 Pro Max', brand: 'Apple'},
+  {id: 8, model: 'Watch Series 5', brand: 'Apple'},
+  {id: 9, model: 'Mate 40 RS Porsche Design', brand: 'Huawei'},
+  {id: 10, model: 'Nova 7 SE 5G Youth', brand: 'Huawei'}
 ];
 
 /**
@@ -94,7 +85,8 @@ export class OrdersTableDataSource extends DataSource<OrdersTableItem> {
     return data.sort((a, b) => {
       const isAsc = this.sort.direction === 'asc';
       switch (this.sort.active) {
-        case 'name': return compare(a.name, b.name, isAsc);
+        case 'brand': return compare(a.brand, b.brand, isAsc);
+        case 'model': return compare(a.model, b.model, isAsc);
         case 'id': return compare(+a.id, +b.id, isAsc);
         default: return 0;
       }
@@ -102,7 +94,7 @@ export class OrdersTableDataSource extends DataSource<OrdersTableItem> {
   }
 }
 
-/** Simple sort comparator for example ID/Name columns (for client-side sorting). */
+/** Simple sort comparator for example ID/model columns (for client-side sorting). */
 function compare(a: string | number, b: string | number, isAsc: boolean) {
   return (a < b ? -1 : 1) * (isAsc ? 1 : -1);
 }

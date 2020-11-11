@@ -2,17 +2,18 @@ import { Component, OnInit } from '@angular/core';
 import { ChartDataSets, ChartOptions, ChartType } from 'chart.js';
 import { Color, Label } from 'ng2-charts';
 
+import { SalesService } from '../../services/sales.service';
+
 @Component({
   selector: 'app-annual-sales-chart',
   templateUrl: './annual-sales-chart.component.html',
   styleUrls: ['./annual-sales-chart.component.css']
 })
 export class AnnualSalesChartComponent implements OnInit {
-
   public lineChartData: ChartDataSets[] = [
-    { data: [65, 59, 80, 81, 56, 55, 40], label: 'Series A' },
-  ];
-  public lineChartLabels: Label[] = ['January', 'February', 'March', 'April', 'May', 'June', 'July'];
+    { data: [], label: 'Total Sales' },
+  ]; 
+  public lineChartLabels: Label[] = [];
   public lineChartOptions: ChartOptions = {
     responsive: true,
   };
@@ -26,9 +27,16 @@ export class AnnualSalesChartComponent implements OnInit {
   public lineChartType: ChartType = 'line';
   public lineChartPlugins = [];
 
-  constructor() { }
+  constructor(private salesService: SalesService) { }
 
   ngOnInit() {
+    this.salesService.getSalesByMonth().subscribe({
+      next: salesItems => {
+        salesItems.forEach(li => {
+          this.lineChartData[0].data.push(li.revenue);
+          this.lineChartLabels.push(li.month);
+        });
+      }
+    });
   }
-
 }

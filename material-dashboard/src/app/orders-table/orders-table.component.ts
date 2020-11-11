@@ -16,7 +16,7 @@ export class OrdersTableComponent implements AfterViewInit, OnInit {
   dataSource: OrdersTableDataSource;
 
   /** Columns displayed in the table. Columns IDs can be added, removed, or reordered. */
-  displayedColumns = ['id', 'name'];
+  displayedColumns = ['id', 'model', 'brand'];
 
   ngOnInit() {
     this.dataSource = new OrdersTableDataSource();
