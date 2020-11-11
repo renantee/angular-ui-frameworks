@@ -17,13 +17,28 @@ import { MatGridListModule } from '@angular/material/grid-list';
 import { MatCardModule } from '@angular/material/card';
 import { MatMenuModule } from '@angular/material/menu';
 import { CardComponent } from './card/card.component';
+import { ProductSalesChartComponent } from './charts/product-sales-chart/product-sales-chart.component';
+import { SalesTrafficChartComponent } from './charts/sales-traffic-chart/sales-traffic-chart.component';
+import { AnnualSalesChartComponent } from './charts/annual-sales-chart/annual-sales-chart.component';
+import { StoreSessionsChartComponent } from './charts/store-sessions-chart/store-sessions-chart.component';
+import { OrdersTableComponent } from './orders-table/orders-table.component';
+import { MatTableModule } from '@angular/material/table';
+import { MatPaginatorModule } from '@angular/material/paginator';
+import { MatSortModule } from '@angular/material/sort';
+import { MiniCardComponent } from './mini-card/mini-card.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     NavComponent,
     DashComponent,
-    CardComponent
+    CardComponent,
+    ProductSalesChartComponent,
+    SalesTrafficChartComponent,
+    AnnualSalesChartComponent,
+    StoreSessionsChartComponent,
+    OrdersTableComponent,
+    MiniCardComponent
   ],
   imports: [
     BrowserModule,
@@ -38,7 +53,10 @@ import { CardComponent } from './card/card.component';
     MatListModule,
     MatGridListModule,
     MatCardModule,
-    MatMenuModule
+    MatMenuModule,
+    MatTableModule,
+    MatPaginatorModule,
+    MatSortModule
   ],
   providers: [],
   bootstrap: [AppComponent]
