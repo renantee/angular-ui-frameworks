@@ -2,29 +2,38 @@ import { Component, OnInit } from '@angular/core';
 import { ChartDataSets, ChartOptions, ChartType } from 'chart.js';
 import { Label } from 'ng2-charts';
 
+import { StoreSummaryService } from '../../services/store-summary.service';
+
 @Component({
   selector: 'app-store-sessions-chart',
   templateUrl: './store-sessions-chart.component.html',
   styleUrls: ['./store-sessions-chart.component.css']
 })
 export class StoreSessionsChartComponent implements OnInit {
-
   public barChartOptions: ChartOptions = {
     responsive: true,
   };
-  public barChartLabels: Label[] = ['2006', '2007', '2008', '2009', '2010', '2011', '2012'];
+  public barChartLabels: Label[] = [];
   public barChartType: ChartType = 'bar';
   public barChartLegend = true;
   public barChartPlugins = [];
 
   public barChartData: ChartDataSets[] = [
-    { data: [65, 59, 80, 81, 56, 55, 40], label: 'Series A' },
-    { data: [28, 48, 40, 19, 86, 27, 90], label: 'Series B' }
+    { data: [], label: 'Series A' },
+    { data: [], label: 'Series B' }
   ];
 
-  constructor() { }
+  constructor(private storeSummaryService: StoreSummaryService) { }
 
   ngOnInit() {
+    this.storeSummaryService.getStoreSessions().subscribe({
+      next: sessionItems => {
+        sessionItems.forEach(li => {
+          this.barChartData[0].data.push(li.a);
+          this.barChartData[1].data.push(li.b);
+          this.barChartLabels.push(li.year);
+        });
+      }
+    });
   }
-
 }

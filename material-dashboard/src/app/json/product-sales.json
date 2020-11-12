@@ -1,0 +1,9 @@
+[
+  { "category": "Eating", "a": 65, "b": 28 },
+  { "category": "Drinking", "a": 59, "b": 48 },
+  { "category": "Sleeping", "a": 90, "b": 40 },
+  { "category": "Designing", "a": 81, "b": 19 },
+  { "category": "Coding", "a": 56, "b": 96 },
+  { "category": "Cycling", "a": 55, "b": 27 },
+  { "category": "Running", "a": 40, "b": 100 }
+]

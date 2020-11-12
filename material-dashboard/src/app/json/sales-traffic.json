@@ -1,0 +1,5 @@
+[
+  { "category": "Download Sales", "value": 300 },
+  { "category": "In-Store Sales", "value": 500 },
+  { "category": "Mail Sales", "value": 100 }
+]
