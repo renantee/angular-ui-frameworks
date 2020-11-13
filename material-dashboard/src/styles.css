@@ -15,3 +15,18 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
   align-items: center;
   justify-content: center;
 }
+
+.full-width-table {
+  width: 100%;
+}
+  .full-width-table th {
+    font-weight: bold;
+  }
+  .full-width-table td {
+    font-size: 12px;
+    text-align: left;
+  }
+
+.small-table{
+  overflow-x: scroll !important;
+}

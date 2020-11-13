@@ -26,6 +26,9 @@ import { MatTableModule } from '@angular/material/table';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatSortModule } from '@angular/material/sort';
 import { MiniCardComponent } from './mini-card/mini-card.component';
+import { CustomersTableComponent } from './customers-table/customers-table.component';
+import { ProductsTableComponent } from './products-table/products-table.component';
+import { SalesTableComponent } from './sales-table/sales-table.component';
 
 @NgModule({
   declarations: [
@@ -38,7 +41,10 @@ import { MiniCardComponent } from './mini-card/mini-card.component';
     AnnualSalesChartComponent,
     StoreSessionsChartComponent,
     OrdersTableComponent,
-    MiniCardComponent
+    MiniCardComponent,
+    CustomersTableComponent,
+    ProductsTableComponent,
+    SalesTableComponent
   ],
   imports: [
     BrowserModule,
