@@ -1,22 +1,34 @@
 import { NgModule } from '@angular/core';
+import { CommonModule, } from '@angular/common';
+import { BrowserModule  } from '@angular/platform-browser';
 import { Routes, RouterModule } from '@angular/router';
 
-import { CustomersTableComponent } from './customers-table/customers-table.component';
-import { DashComponent } from './dash/dash.component';
-import { OrdersTableComponent } from './orders-table/orders-table.component';
-import { ProductsTableComponent } from './products-table/products-table.component';
-import { SalesTableComponent } from './sales-table/sales-table.component';
+import { AdminLayoutComponent } from './layouts/admin-layout/admin-layout.component';
 
-const routes: Routes = [
-  { path: 'customers', component: CustomersTableComponent },
-  { path: 'dashboard', component: DashComponent },
-  { path: 'orders', component: OrdersTableComponent },
-  { path: 'products', component: ProductsTableComponent },
-  { path: 'sales', component: SalesTableComponent },
+const routes: Routes =[
+  {
+    path: '',
+    redirectTo: 'dashboard',
+    pathMatch: 'full',
+  }, {
+    path: '',
+    component: AdminLayoutComponent,
+    children: [{
+      path: '',
+      loadChildren: './layouts/admin-layout/admin-layout.module#AdminLayoutModule'
+    }]
+  }
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  imports: [
+    CommonModule,
+    BrowserModule,
+    RouterModule.forRoot(routes,{
+       useHash: true
+    })
+  ],
+  exports: [
+  ],
 })
 export class AppRoutingModule { }
